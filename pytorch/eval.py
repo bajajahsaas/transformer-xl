@@ -45,7 +45,7 @@ assert args.ext_len >= 0, 'extended context length must be non-negative'
 device = torch.device("cuda" if args.cuda else "cpu")
 
 # Get logger
-logging = get_logger(os.path.join(args.out_dir, 'log.txt'),
+logging = get_logger(os.path.join(args.out_dir, 'log_' + args.mem_len + '.txt'),
                      log_=not args.no_log)
 
 # Load dataset
