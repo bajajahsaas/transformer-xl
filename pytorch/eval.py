@@ -33,6 +33,8 @@ parser.add_argument('--cuda', action='store_true',
                     help='use CUDA')
 parser.add_argument('--work_dir', type=str, required=True,
                     help='path to the work_dir')
+parser.add_argument('--out_dir', type=str, required=True,
+                    help='path to the out_dir')
 parser.add_argument('--no_log', action='store_true',
                     help='do not log the eval result')
 parser.add_argument('--same_length', action='store_true',
@@ -43,7 +45,7 @@ assert args.ext_len >= 0, 'extended context length must be non-negative'
 device = torch.device("cuda" if args.cuda else "cpu")
 
 # Get logger
-logging = get_logger(os.path.join(args.work_dir, 'log.txt'),
+logging = get_logger(os.path.join(args.out_dir, 'log.txt'),
                      log_=not args.no_log)
 
 # Load dataset
