@@ -1,10 +1,11 @@
 #!/bin/bash
 
+
 if [[ $1 == 'train' ]]; then
     echo 'Run training...'
     python train.py \
         --cuda \
-        --data ../data/wikitext-103/ \
+        --data ../../data/wikitext-103/ \
         --dataset wt103 \
         --adaptive \
         --n_layer 16 \
@@ -29,7 +30,7 @@ elif [[ $1 == 'eval' ]]; then
     echo 'Run evaluation...'
     python eval.py \
         --cuda \
-        --data ../data/wikitext-103/ \
+        --data ../../data/wikitext-103/ \
         --dataset wt103 \
         --tgt_len 64 \
         --mem_len 640 \
