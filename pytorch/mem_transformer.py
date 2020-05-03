@@ -647,7 +647,7 @@ class MemTransformerLM(nn.Module):
         mlen = mems[0].size(0) if mems is not None else 0
         klen = mlen + qlen
 
-        print(qlen, mlen, klen) # 128 0 128 (first run), 128 640 768 (next runs)
+        # print(qlen, mlen, klen) # 128 0 128 (first run), 128 640 768 (next runs)
 
         if self.same_length:
             all_ones = word_emb.new_ones(qlen, klen)
