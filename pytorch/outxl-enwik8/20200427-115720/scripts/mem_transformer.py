@@ -646,9 +646,6 @@ class MemTransformerLM(nn.Module):
 
         mlen = mems[0].size(0) if mems is not None else 0
         klen = mlen + qlen
-
-        print(qlen, mlen, klen) # 128 0 128 (first run), 128 640 768 (next runs)
-
         if self.same_length:
             all_ones = word_emb.new_ones(qlen, klen)
             mask_len = klen - self.mem_len
@@ -746,10 +743,8 @@ class MemTransformerLM(nn.Module):
 
         tgt_len = target.size(0)
         hidden, new_mems = self._forward(data, mems=mems)
-        # print('hidden: ', hidden.shape, ' new_mems: ', len(new_mems), len(new_mems[0])) # hidden:  torch.Size([128, bsz, 410])  new_mems:  (n_layer+1, mem_len)
 
         pred_hid = hidden[-tgt_len:]
-        # print('pred_hid: ', pred_hid.shape)
         if self.sample_softmax > 0 and self.training:
             assert self.tie_weight
             logit = sample_logits(self.word_emb,

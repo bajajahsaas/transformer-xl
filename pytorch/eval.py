@@ -81,11 +81,14 @@ def evaluate(eval_iter):
     with torch.no_grad():
         mems = tuple()
         for idx, (data, target, seq_len) in enumerate(eval_iter):
+            # shape of data: (seqlen, bsz)
             ret = model(data, target, *mems)
             loss, mems = ret[0], ret[1:]
             loss = loss.mean()
             total_loss += seq_len * loss.item()
             total_len += seq_len
+
+
         total_time = time.time() - start_time
     logging('Time : {:.2f}s, {:.2f}ms/segment'.format(
             total_time, 1000 * total_time / (idx+1)))

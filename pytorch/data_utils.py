@@ -13,7 +13,7 @@ class LMOrderedIterator(object):
             data -- LongTensor -- the LongTensor is strictly ordered
         """
         self.bsz = bsz
-        self.bptt = bptt
+        self.bptt = bptt # tgt_len
         self.ext_len = ext_len if ext_len is not None else 0
 
         self.device = device
