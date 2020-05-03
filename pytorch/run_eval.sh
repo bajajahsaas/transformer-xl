@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 export MODEL_PATH=/mnt/nfs/work1/696ds-s20/abajaj/nlplab/long-term-context/models/transformer-xl
+
+rm outxl/log.txt # eval.py writes logs here
 tgts=(8 16 32 64 128 256 512 1024)
 for tgt in "${tgts[@]}"
 do
