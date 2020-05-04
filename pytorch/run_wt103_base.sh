@@ -32,7 +32,7 @@ elif [[ $1 == 'eval' ]]; then
         --cuda \
         --data ../../data/wikitext-103/ \
         --dataset wt103 \
-        --tgt_len 128 \
+        --tgt_len 64 \
         --mem_len $2 \
         --ext_len 0 \
         --clamp_len 400 \
